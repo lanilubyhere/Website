@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Random Image Generator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+    }
+    form {
+      margin: 20px;
+    }
+    img {
+      margin-top: 20px;
+      max-width: 90%;
+      height: auto;
+      border: 2px solid #333;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Bienvenide al cups generator</h1>
+  <p>Qué vaso eres dice mucho sobre ti segun la ferni_cup</p>
+  
+  <form id="nameForm">
+    <label for="name">Tu nombre:</label><br>
+    <input type="text" id="name" name="name" required>
+    <br><br>
+    <button type="submit">Click para ver qué pedo</button>
+  </form>
+  
+  <div id="imageContainer" style="display: none;">
+    <h2>Tu vaso es:</h2>
+    <img id="randomImage" src="" alt="Random Image">
+  </div>
+  
+  <script>
+    // Array of image URLs
+    const imageDatabase = [
+      "https://via.placeholder.com/300/FF0000/FFFFFF?text=Image+1",
+      "https://via.placeholder.com/300/00FF00/FFFFFF?text=Image+2",
+      "https://via.placeholder.com/300/0000FF/FFFFFF?text=Image+3",
+      "https://via.placeholder.com/300/FFFF00/FFFFFF?text=Image+4",
+      "https://via.placeholder.com/300/FF00FF/FFFFFF?text=Image+5"
+    ];
+
+    // Handle form submission
+    document.getElementById('nameForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      // Get a random image from the database
+      const randomIndex = Math.floor(Math.random() * imageDatabase.length);
+      const randomImage = imageDatabase[randomIndex];
+      
+      // Display the image
+      document.getElementById('randomImage').src = randomImage;
+      document.getElementById('imageContainer').style.display = 'block';
+    });
+  </script>
+</body>
+</html>
